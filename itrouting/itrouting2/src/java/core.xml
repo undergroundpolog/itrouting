@@ -1,0 +1,26 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- Author: intraffic -->
+ 
+<struts>
+    <!-- Add your configuration elements here -->
+    <package name="com.intraffic.itrouting.core" namespace="/" extends="json-default">
+        <action name="getPath" class="com.intraffic.itrouting.core.GetPath">
+            <result type="json" name="success">
+                <param name="root">path</param>
+            </result>
+            <result type="json" name="error">
+                <param name="root">path</param>
+                <param name="statusCode">500</param>
+            </result>
+        </action>
+        <action name="init" class="com.intraffic.itrouting.core.GetPath" method="initAll">
+            <result type="json"/>
+        </action>
+        <action name="updatecost" class="com.intraffic.itrouting.core.GetPath" method="updateCost">
+            <result type="json"/>
+        </action>
+    </package>
+</struts>

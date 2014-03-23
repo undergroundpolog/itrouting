@@ -1,0 +1,15 @@
+if [ -z "${CATALINA_HOME+X}" ]
+then
+    echo var CATALINA_HOME is unset
+elif [ -z "$CATALINA_HOME" ]
+then
+    echo var CATALINA_HOME set but empty
+else
+    echo "The value of \$CATALINA_HOME is $CATALINA_HOME"
+    rm -f ../../itrouting2/dist/itrouting2.war
+    ./makewar.sh
+    echo "Moviendo war"
+    echo "------------"
+    rm -f $CATALINA_HOME/webapps/itrouting2.war
+    cp -f ../../itrouting2/dist/itrouting2.war $CATALINA_HOME/webapps/
+fi
