@@ -1,6 +1,8 @@
 package com.intraffic.itrouting.core;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import com.intraffic.utils.Entity.Pair;
 
 
 /**
@@ -72,11 +74,18 @@ public interface Neo4jGraph {
      * @param cost type cost. Must be rt, length or normal
      * @return ArrayList of LINK_IDs
      */
-    public ArrayList<String> getPath(String source_id, String target_id, String[] params);
+    public Pair<ArrayList<String>,Double> getPath(String source_id, String target_id, String[] params);
 
     /**
      * Shut down the spatial database.
      */
     public void shutDown();
+
+    /**
+    *   Returns the serialize information of a particular entity in the graph
+    *   @param id   ID of the entity
+    *   @param type type of entity
+    */
+    public HashMap<String,Object> getSerializeNodeInfo(int id, String type);
     
 }
