@@ -56,6 +56,7 @@ public class PreferencesImpl extends HibernateSession implements com.intraffic.i
 			"	\"type\" like '%"+targetPOItype+"%' )";
 
 		try {
+			System.out.println(query);
 			hib_query = this.session.createSQLQuery(query);
             result = hib_query.list();
             for(Object res : result) {
@@ -206,6 +207,7 @@ public class PreferencesImpl extends HibernateSession implements com.intraffic.i
 		try {
 			//Phase 1
 			LinkedList<Phase1Element> candidates = this.phase1(position,targetPOItype);
+			System.out.println("phase 1: length: "+candidates.size());
 
 			//Phase 2
 			HashMap<String,Double[]> candidates_skyline = this.phase2(candidates,restrictionPOItype,costType);
