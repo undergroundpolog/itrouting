@@ -3,7 +3,7 @@
 -- -------------------
 --
 -- Input:
---     navteq."Streets_new"  
+--     navteq."Streets_gc"  
 --     navteq."Zlevels"
 --
 -- The schema itrouting2 will be created
@@ -112,7 +112,7 @@ select
     ST_Y(ST_EndPoint(the_geom)),
     not "DIR_TRAVEL",
     the_geom
-from navteq."Streets_new"
+from navteq."Streets_gc"
     union
 select 
     "LINK_ID",
@@ -128,7 +128,7 @@ select
     ST_Y(ST_StartPoint(the_geom)),
     not "DIR_TRAVEL",
     ST_Reverse(the_geom)
-from navteq."Streets_new"
+from navteq."Streets_gc"
 where not "DIR_TRAVEL"
 order by old_link_id;
 
@@ -172,7 +172,7 @@ set max_time_cat =
         when s."SPEED_CAT" = '7' then 30.0*0.277777778
         else 11*0.277777778
     end))
-from navteq."Streets_new" as s
+from navteq."Streets_gc" as s
 where old_id = s."LINK_ID";
 
 --
